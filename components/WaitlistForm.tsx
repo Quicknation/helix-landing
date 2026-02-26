@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function WaitlistForm({ initialCount }: { initialCount: number }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [count, setCount] = useState(initialCount);
@@ -13,6 +14,7 @@ export default function WaitlistForm({ initialCount }: { initialCount: number })
     e.preventDefault();
     if (!email || !name) return;
 
+    if (!agreed) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/waitlist", {
@@ -43,10 +45,10 @@ export default function WaitlistForm({ initialCount }: { initialCount: number })
         style={{ background: "rgba(26,115,232,0.1)" }}
       >
         <div className="text-4xl mb-4">&#10003;</div>
-        <h3 className="text-xl font-bold text-white mb-2">You&apos;re on the list.</h3>
+        <h3 className="text-xl font-bold text-white mb-2">You&apos;re a Beta Founder.</h3>
         <p className="text-gray-400 text-sm">{message}</p>
         {count > 0 && (
-          <p className="text-xs text-gray-600 mt-3">{count} people waiting with you.</p>
+          <p className="text-xs text-gray-600 mt-3">{count} Beta Founders and counting.</p>
         )}
       </div>
     );
@@ -77,16 +79,30 @@ export default function WaitlistForm({ initialCount }: { initialCount: number })
         <p className="text-sm text-red-400">{message}</p>
       )}
 
+      {/* Beta agreement checkbox */}
+      <label className="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={agreed}
+          onChange={(e) => setAgreed(e.target.checked)}
+          required
+          className="mt-1 flex-shrink-0 accent-blue-500"
+        />
+        <span className="text-xs text-gray-500 leading-relaxed">
+          I&apos;ll keep beta details private, not share my access with others, and provide honest feedback to help build HELIX.
+        </span>
+      </label>
+
       <button
         type="submit"
-        disabled={status === "loading"}
+        disabled={status === "loading" || !agreed}
         className="w-full py-4 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
         style={{ background: "#1a73e8" }}
       >
-        {status === "loading" ? "Joining..." : "Join the Waitlist \u2192"}
+        {status === "loading" ? "Claiming your spot..." : "Become a Beta Founder \u2192"}
       </button>
 
-      <p className="text-xs text-gray-600">No spam. Just HELIX news. Unsubscribe anytime.</p>
+      <p className="text-xs text-gray-600">Beta access is private. Don&apos;t share your invite. No spam — just HELIX.</p>
     </form>
   );
 }

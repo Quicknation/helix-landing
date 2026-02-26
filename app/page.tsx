@@ -64,7 +64,7 @@ export default function Home() {
               background: "rgba(26,115,232,0.1)",
             }}
           >
-            Early Access &#8212; Limited Spots
+            Beta Founders &#8212; 50 Spots Only
           </div>
 
           <h1
@@ -91,7 +91,7 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold transition-all hover:opacity-90 hover:scale-105"
               style={{ background: "#1a73e8", color: "white" }}
             >
-              Join the Waitlist &#8594;
+              Become a Beta Founder &#8594;
             </a>
             <a
               href="#features"
@@ -322,14 +322,14 @@ export default function Home() {
       >
         <div className="max-w-lg mx-auto text-center">
           <div className="text-xs font-semibold text-blue-400 tracking-widest mb-4">
-            LIMITED EARLY ACCESS
+            BETA FOUNDERS &#8212; 50 SPOTS
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Be first. Get everything.
+            Become a Beta Founder.
           </h2>
           <p className="text-gray-400 mb-8">
-            Early access members get lifetime pricing, direct input on features, and first access
-            to every integration as it ships. 50 spots to unlock Phase 1.
+            The first 50 sign-ups are Beta Founders. Free access to the beta until launch.
+            No payment &#8212; just your honest feedback as we build. Your input shapes what HELIX becomes.
           </p>
           <WaitlistForm initialCount={waitlistCount} />
         </div>
@@ -339,29 +339,29 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-12">
-            Early access means more than a head start.
+            Beta Founders get more than early access.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                icon: "🔐",
-                title: "Lifetime founding price",
-                desc: "Lock in the lowest price HELIX will ever be. Early members never pay full price.",
+                icon: "🚀",
+                title: "Free beta access until launch",
+                desc: "Use HELIX from day one at no cost. Full access to the beta — no credit card, no trial period. Just build.",
               },
               {
                 icon: "🗺️",
-                title: "Direct roadmap input",
-                desc: "Your feedback shapes what gets built next. Not a survey — direct conversation with the team.",
+                title: "Shape what gets built",
+                desc: "Your feedback isn't a survey response — it's a direct line to the founder. What you say changes what ships next.",
               },
               {
                 icon: "⚡",
-                title: "Every integration first",
-                desc: "Each new HELIX Flow and HELIX Sphere integration ships to you before public release.",
+                title: "First to every feature",
+                desc: "Each new HELIX Flow integration and HELIX Sphere ecosystem ships to Beta Founders before anyone else sees it.",
               },
               {
-                icon: "🛡️",
-                title: "White-glove onboarding",
-                desc: "HELIX onboards anyone in under 5 minutes. Early members get personal setup assistance.",
+                icon: "🤝",
+                title: "Direct conversation with the founder",
+                desc: "This isn't a faceless startup. Beta Founders talk to the person building HELIX. Your experience matters personally.",
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-4 p-5 rounded-xl border border-white/10">

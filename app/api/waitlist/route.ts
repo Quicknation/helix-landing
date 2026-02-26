@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     // Log signup — always visible in Vercel logs
     console.log(
-      `[HELIX WAITLIST] New signup: ${name} <${email}> — ${new Date().toISOString()}`
+      `[HELIX BETA FOUNDERS] New Beta Founder: ${name} <${email}> — ${new Date().toISOString()}`
     );
 
     // Send notification email via Resend (optional — configure in .env.local)
@@ -38,9 +38,9 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "HELIX Waitlist <onboarding@resend.dev>",
             to: [notifyEmail],
-            subject: `HELIX Waitlist: New signup from ${name}`,
+            subject: `HELIX Beta Founders: New sign-up from ${name}`,
             html: `
-              <h2>New HELIX Waitlist Signup</h2>
+              <h2>New HELIX Beta Founder</h2>
               <p><strong>Name:</strong> ${name}</p>
               <p><strong>Email:</strong> ${email}</p>
               <p><strong>Time:</strong> ${new Date().toISOString()}</p>
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "You're on the list. We'll reach out when HELIX is ready.",
+      message: "Welcome to the founding team. We'll be in touch — your feedback will shape what HELIX becomes.",
     });
   } catch (err) {
     console.error("[HELIX WAITLIST] Error:", err);
